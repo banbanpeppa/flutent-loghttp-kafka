@@ -1,0 +1,18 @@
+version: '3'
+services:
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf/fluent.conf:/fluentd/etc/fluent.conf
+    ports:
+      - "${HTTP_PORT:-16001}:${HTTP_PORT:-16001}"
+    environment:
+      - KAFKA_BROKERS=${KAFKA_BROKERS}
+      - TARGET_TOPIC=${TARGET_TOPIC}
+      - HTTP_PORT=${HTTP_PORT:-16001}
+    networks:
+      - fluenthttp
+
+networks:
+  fluenthttp:
+    driver: bridge
