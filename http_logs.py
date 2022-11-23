@@ -2,7 +2,7 @@ import requests
 import time
 
 def send_logs(file_name='test.log', body={}):
-    resp = requests.post(url='http://testing-chenzhiling.loghub.netease.com:16001/{}'.format(file_name), json=body)
+    resp = requests.post(url='http://localhost:16001/{}'.format(file_name), json=body)
     if resp.status_code == 200:
         return True
 

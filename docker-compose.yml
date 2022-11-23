@@ -4,6 +4,7 @@ services:
     build: ./fluentd
     volumes:
       - ./fluentd/conf/fluent.conf:/fluentd/etc/fluent.conf
+      - ./td-agent/:/var/log/td-agent/
     ports:
       - "${HTTP_PORT:-16001}:${HTTP_PORT:-16001}"
     environment:
